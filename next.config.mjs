@@ -5,10 +5,6 @@ const nextConfig = {
         pokemonLimit: 150,
         pokemonByPage: 20,
     },
-    rewrites: () => [{
-        source: '/',
-        destination: '/1'
-    }]
 };
 
 export default nextConfig;
