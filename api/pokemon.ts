@@ -2,23 +2,26 @@ import getConfig from 'next/config'
 import { ApiPokemonList } from '@/types/api-pokemon-list'
 import { ApiPokemon } from '@/types/api-pokemon'
 import { HomePageData } from '@/types/home-page-data'
+import { getLimitForPage, getPagesCount } from '@/helpers/paging'
 
 export const usePokemonApi = () => {
   const { publicRuntimeConfig } = getConfig()
 
   const getList = async (pageNumber: number): Promise<HomePageData | null> => {
-    const maxPagesCount = Math.floor(
-      publicRuntimeConfig.pokemonLimit / publicRuntimeConfig.pokemonByPage
+    const maxPagesCount = getPagesCount(
+      publicRuntimeConfig.pokemonLimit,
+      publicRuntimeConfig.pokemonByPage
     )
 
-    const limit =
-      pageNumber + 1 < maxPagesCount
-        ? publicRuntimeConfig.pokemonByPage
-        : publicRuntimeConfig.pokemonLimit -
-          publicRuntimeConfig.pokemonByPage * maxPagesCount
+    const limit = getLimitForPage(
+      pageNumber,
+      maxPagesCount,
+      publicRuntimeConfig.pokemonByPage,
+      publicRuntimeConfig.pokemonLimit
+    )
 
     const parameters = new URLSearchParams({
-      limit: limit,
+      limit: limit.toString(),
       offset: (pageNumber * publicRuntimeConfig.pokemonByPage).toString(),
     })
 
