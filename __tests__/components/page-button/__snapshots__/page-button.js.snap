@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PageButton /> snapshot 1`] = `
+<a
+  className="shadow-hard flex size-[32px] items-center justify-center border-2 text-base font-bold border-primaryfalse"
+  href="/"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onTouchStart={[Function]}
+>
+  1
+</a>
+`;
+
+exports[`<PageButton /> snapshot active 1`] = `
+<a
+  className="shadow-hard flex size-[32px] items-center justify-center border-2 text-base font-bold border-primary bg-primary text-white"
+  href="/"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onTouchStart={[Function]}
+>
+  1
+</a>
+`;

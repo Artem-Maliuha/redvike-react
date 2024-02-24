@@ -2,8 +2,8 @@
 const nextConfig = {
     publicRuntimeConfig: {
         pokemonApiUrl: process.env.POKEMON_API_URL,
-        pokemonLimit: 150,
-        pokemonByPage: 20,
+        pokemonLimit: process.env.POKEMON_LIMIT,
+        pokemonByPage: process.env.POKEMON_BY_PAGE,
     },
 };
 

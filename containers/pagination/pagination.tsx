@@ -48,7 +48,7 @@ export const Pagination = (props: PaginationProps) => {
           alt=">"
           width={20}
           height={20}
-          style={{ rotate: '180deg' }}
+          className="rotate-180"
         />
       </PageButton>
     </div>

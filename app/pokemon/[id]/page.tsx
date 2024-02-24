@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import { usePokemonApi } from '@/api/pokemon'
 import { Navigation } from '@/containers/navigation'
 import React from 'react'
+import { usePokemonProvider } from '@/provider/pokemon-provider'
 
 export default async function Pokemon({ params }: { params: { id: number } }) {
   const pokemonId = params.id
-  const repository = usePokemonApi()
+  const repository = usePokemonProvider()
 
   const pokemon = await repository.getPokemon(params.id)
   if (!pokemon) {
