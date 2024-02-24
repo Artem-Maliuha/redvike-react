@@ -3,9 +3,10 @@ import { ItemCard } from '@/components/item-card'
 import { CardList } from '@/containers/card-list'
 import { Pagination } from '@/containers/pagination'
 import { getPokemonIdByUrl } from '@/helpers/get-pokemon-id-by-url'
-import { usePokemonApi } from '@/api/pokemon'
 import { Navigation } from '@/containers/navigation'
 import React from 'react'
+import { usePokemonProvider } from '@/provider/pokemon-provider'
+import { HomePageData } from '@/types/home-page-data'
 
 export default async function Home({
   searchParams,
@@ -14,12 +15,14 @@ export default async function Home({
 }) {
   const { publicRuntimeConfig } = getConfig()
   const pageNumber = parseInt(searchParams?.page || '1') || 1
-  const pokemonRepository = usePokemonApi()
+  const pokemonRepository = usePokemonProvider()
 
   const data = await pokemonRepository.getList(pageNumber - 1)
+
   if (!data) {
     return null
   }
+
   const { count, list } = data
 
   return (
