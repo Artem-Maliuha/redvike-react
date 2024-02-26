@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navigation /> snapshot 1`] = `
+<h1
+  className="text-xl font-bold"
+>
+  Pokedex
+</h1>
+`;
+
+exports[`<Navigation /> snapshot with title 1`] = `
+<nav
+  className="text-xl font-bold"
+>
+  <a
+    href="/"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onTouchStart={[Function]}
+  >
+    Home
+  </a>
+   / 
+  <span
+    className="capitalize"
+  >
+    Pokemon
+  </span>
+</nav>
+`;
