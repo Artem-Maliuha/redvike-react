@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import React from 'react'
+import { TanstackProvider } from '@/provider/tanstack-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="flex min-h-screen flex-col gap-[24px] p-[24px]">
-          {children}
-        </main>
+        <TanstackProvider>
+          <main className="flex min-h-screen flex-col gap-[24px] p-[24px]">
+            {children}
+          </main>
+        </TanstackProvider>
       </body>
     </html>
   )

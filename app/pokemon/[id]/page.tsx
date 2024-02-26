@@ -1,13 +1,31 @@
+'use client'
 import Image from 'next/image'
 import { Navigation } from '@/containers/navigation'
 import React from 'react'
 import { usePokemonProvider } from '@/provider/pokemon-provider'
+import { useQuery } from '@tanstack/react-query'
 
-export default async function Pokemon({ params }: { params: { id: number } }) {
+export default function Pokemon({ params }: { params: { id: number } }) {
   const pokemonId = params.id
-  const repository = usePokemonProvider()
+  const pokemonProvider = usePokemonProvider()
 
-  const pokemon = await repository.getPokemon(params.id)
+  const {
+    isLoading,
+    error,
+    data: pokemon,
+  } = useQuery({
+    queryKey: ['pokemonDetails', pokemonId],
+    queryFn: () => pokemonProvider.getPokemon(pokemonId).then((res) => res),
+  })
+
+  if (isLoading) {
+    return 'Loading ...'
+  }
+
+  if (error) {
+    return `Error: ${error.message}`
+  }
+
   if (!pokemon) {
     return
   }
@@ -44,7 +62,6 @@ export default async function Pokemon({ params }: { params: { id: number } }) {
       <div className="container mx-auto">
         <Navigation title={pokemon.name} />
       </div>
-
       <article className="container mx-auto flex flex-col sm:flex-row">
         <div>
           <Image

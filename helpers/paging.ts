@@ -10,3 +10,7 @@ export const getLimitForPage = (
 ) => {
   return pageNumber + 1 < pagesCount ? byPage : limit - byPage * pagesCount
 }
+
+export const getOffsetForPage = (pageNumber: number, byPage: number) => {
+  return pageNumber * byPage - byPage
+}

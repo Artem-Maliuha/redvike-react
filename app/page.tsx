@@ -1,26 +1,39 @@
-import getConfig from 'next/config'
+'use client'
 import { ItemCard } from '@/components/item-card'
 import { CardList } from '@/containers/card-list'
 import { Pagination } from '@/containers/pagination'
 import { getPokemonIdByUrl } from '@/helpers/get-pokemon-id-by-url'
-import { Navigation } from '@/containers/navigation'
 import React from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { usePokemonProvider } from '@/provider/pokemon-provider'
-import { HomePageData } from '@/types/home-page-data'
+import { Navigation } from '@/containers/navigation'
+import { runtimeConfig } from '@/helpers/runtime-config'
 
-export default async function Home({
+export default function Home({
   searchParams,
 }: {
   searchParams?: { [key: string]: string }
 }) {
-  const { publicRuntimeConfig } = getConfig()
   const pageNumber = parseInt(searchParams?.page || '1') || 1
-  const pokemonRepository = usePokemonProvider()
+  const { pokemonByPage } = runtimeConfig
 
-  const data = await pokemonRepository.getList(pageNumber - 1)
+  const pokemonProvider = usePokemonProvider()
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ['pokemonList', pageNumber],
+    queryFn: () => pokemonProvider.getList(pageNumber).then((res) => res),
+  })
+
+  if (isLoading) {
+    return 'Loading ...'
+  }
+
+  if (error) {
+    return `Error: ${error.message}`
+  }
 
   if (!data) {
-    return null
+    return
   }
 
   const { count, list } = data
@@ -44,7 +57,7 @@ export default async function Home({
         <Pagination
           currentPage={pageNumber}
           elementsCount={count}
-          perPageCount={publicRuntimeConfig.pokemonByPage}
+          perPageCount={pokemonByPage}
         />
       </article>
     </>
