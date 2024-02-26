@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Pagination /> snapshot 1`] = `
+<div
+  className="flex flex-row items-end gap-[12px]"
+>
+  <a
+    className="shadow-hard flex size-[32px] items-center justify-center border-2 text-base font-bold border-primaryfalse"
+    href="/"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onTouchStart={[Function]}
+  >
+    <img
+      alt="<"
+      data-nimg="1"
+      decoding="async"
+      height={20}
+      loading="lazy"
+      onError={[Function]}
+      onLoad={[Function]}
+      src="/assets/images/chevron.svg"
+      style={
+        {
+          "color": "transparent",
+        }
+      }
+      width={20}
+    />
+  </a>
+  <a
+    className="shadow-hard flex size-[32px] items-center justify-center border-2 text-base font-bold border-primaryfalse"
+    href="/"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onTouchStart={[Function]}
+  >
+    1
+  </a>
+  <span
+    className="flex items-end font-bold"
+  >
+    ...
+  </span>
+  <a
+    className="shadow-hard flex size-[32px] items-center justify-center border-2 text-base font-bold border-primary bg-primary text-white"
+    href="/"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onTouchStart={[Function]}
+  >
+    1
+  </a>
+  <span
+    className="flex items-end font-bold"
+  >
+    ...
+  </span>
+  <a
+    className="shadow-hard flex size-[32px] items-center justify-center border-2 text-base font-bold border-primaryfalse"
+    href="/?page=10"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onTouchStart={[Function]}
+  >
+    10
+  </a>
+  <a
+    className="shadow-hard flex size-[32px] items-center justify-center border-2 text-base font-bold border-primaryfalse"
+    href="/?page=2"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onTouchStart={[Function]}
+  >
+    <img
+      alt=">"
+      className="rotate-180"
+      data-nimg="1"
+      decoding="async"
+      height={20}
+      loading="lazy"
+      onError={[Function]}
+      onLoad={[Function]}
+      src="/assets/images/chevron.svg"
+      style={
+        {
+          "color": "transparent",
+        }
+      }
+      width={20}
+    />
+  </a>
+</div>
+`;
